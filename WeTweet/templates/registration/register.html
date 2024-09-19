@@ -1,0 +1,67 @@
+{% extends "layout.html" %}
+
+{% comment %} {% extends "layout.html" %}
+
+{% block content %}
+<h1 class="text-center  mt-4">
+    Welcome to WeTweet
+</h1>
+
+<h2> Register to Enter into Matrix.</h2>
+<form method="post">
+    {% csrf_token %}
+    {{form.as_p}}
+    <button class="btn btn-primary" >Register</button>
+</form>
+
+<p > Already have an account? 
+    <button class="btn btn-primary" >
+        <a href="  {%url 'login'%} " class="text-decoration-none">Login Here</a>
+    </button>
+</p>
+{% endblock %} {% endcomment %}
+
+
+
+{% comment %} {% block content %}
+<h1 class="text-center text-4xl font-bold text-green-400 mt-4">
+    Welcome to WeTweet
+</h1>
+
+<h2 class="text-xl text-green-500 mb-4">Register to Enter the Matrix</h2>
+<form method="post" class="bg-gray-900 p-4 rounded-lg">
+    {% csrf_token %}
+    {{form.as_p}}
+    <button class="bg-green-500 text-black px-4 py-2 rounded-lg">Register</button>
+</form>
+
+<p class="mt-4">Already have an account?
+ 
+    <button onclick="window.location.href='{% url 'login' %}'" class="bg-green-500 text-black py-2 px-4 rounded hover:bg-green-600">Login Here</button>
+
+</p>
+{% endblock %} {% endcomment %}
+
+
+{% block content %}
+<div class="flex justify-center items-center min-h-screen bg-black">
+    <div class="text-center">
+        <h1 class="text-4xl font-bold text-green-300 mt-4">
+            Welcome to WeTweet
+        </h1>
+
+        <h2 class="text-xl text-green-400 mb-4">Register to Enter the Matrix</h2>
+        <form method="post" class="bg-matrix-200 bg-opacity-60 backdrop-blur-2xl p-8 rounded-lg shadow-lg space-y-6">
+            {% csrf_token %}
+            {{form.as_p}}
+            <button class= "bg-matrix-200 text-matrix-50  px-4 py-2 rounded-lg hover:bg-green-400 hover:text-black">Register</button>
+        </form>
+
+        <p class="mt-4">Already have an account?
+            <button onclick="window.location.href='{% url 'login' %}'" class="bg-matrix-200 text-matrix-50  px-4 py-2 rounded-lg hover:bg-green-400 hover:text-black">Login Here</button>
+        </p>
+    </div>
+</div>
+{% endblock %}
+
+

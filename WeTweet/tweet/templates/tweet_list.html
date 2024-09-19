@@ -1,0 +1,65 @@
+{% extends "layout.html" %}
+
+
+{% comment %} {% extends "layout.html" %}
+
+{% block title %} Enter The Matrix{% endblock %}
+
+{% block content %}
+
+<h1 class="text-center  mt-4">
+    Welcome to WeTweet
+</h1>
+<a class="btn btn-primary mb-4" href="{% url 'tweet_create' %}">Post</a>
+<div class="container row gap-3">
+    {% for tweet in tweets  %}
+        <div class="card" style="width: 18rem;">
+            <img src=   class="card-img-top" alt={{tweet.text}}>
+            <div class="card-body">
+            <h5 class="card-title"> {{tweet.user.username}} </h5>
+            <p class="card-text"> {{tweet.text}} </p>
+            {% if tweet.user == user %}
+            <a href="{% url "tweet_edit" tweet.id %}" class="btn btn-primary">Edit</a>
+            <a href="{% url "tweet_delete" tweet.id %}" class="btn btn-primary btn-danger">Delete</a>
+            {% endif %}
+            </div>
+        </div>   
+    {% endfor %}
+</div>
+{% endblock %} {% endcomment %} 
+
+
+
+{% block title %} Enter The Matrix{% endblock %}
+
+{% block content %}
+
+<h1 class="text-center text-4xl font-bold text-matrix-100 mt-4">
+    Welcome to WeTweet
+</h1>
+
+<a class="bg-blue-600 text-white py-2 px-4 rounded hover:bg-blue-800 block w-32 mx-auto my-6 text-center" href="{% url 'tweet_create' %}">
+    Post
+</a>
+
+<div class="container grid grid-cols-1 md:grid-cols-3 gap-6">
+    {% for tweet in tweets %}
+        <div class="card bg-gray-800 text-white p-4 rounded-lg shadow-md flex flex-col">
+            <div class="card-body">
+                {% if tweet.photo %}
+                    <img src="{{ tweet.photo.url }}" alt="{{ tweet.text }}" class="w-48 h-48 object-cover mx-auto mb-4">
+                {% endif %}
+                <h5 class="card-title font-bold text-green-400 text-center"> {{ tweet.user.username }} </h5>
+                <p class="card-text text-center mb-4"> {{ tweet.text }} </p>
+                {% if tweet.user == user %}
+                <div class="flex justify-center gap-4 mt-4">
+                    <a href="{% url 'tweet_edit' tweet.id %}" class="bg-matrix-200 text-matrix-50  px-4 py-2 rounded-lg hover:bg-green-400 hover:text-black">Edit</a>
+                    <a href="{% url 'tweet_delete' tweet.id %}" class="bg-red-600 text-white py-2 px-4 rounded hover:bg-red-800">Delete</a>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+    {% endfor %}
+</div>
+
+{% endblock %}

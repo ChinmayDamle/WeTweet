@@ -1,55 +1,68 @@
 {% extends "layout.html" %}
-
-
-
-{% comment %} {% extends "layout.html" %}
-
 {% block title %} Enter The Matrix{% endblock %}
-
-{% block content %}
-
-<h1 class="text-center  mt-4">
-    Welcome to WeTweet
-</h1>
-
-<h2>{%if form.instance.pk %} Edit Tweet {%else%} Create Tweet{% endif %}</h2>
-
-<form method="POST" enctype="multipart/form-data" class="form" >
-     {% csrf_token %}
-    {{form.as_p}}
-
-    <button class="btn btn-warning " type="submit"> POST </button>
-
-</form>
-
-<a href="{% url 'tweet_list'%}"> Home </a>
-{% endblock %}  {% endcomment %}
-
-
-
-{% block title %} Enter The Matrix{% endblock %}
+{% load widget_tweaks %}
 
 {% block content %}
 <div class="flex justify-center items-center min-h-screen bg-black">
-    <div class="text-center">
-        <h1 class="text-4xl font-bold text-green-700 mt-3">
-            Edit The Matrix
-        </h1>
+  <div class="w-full max-w-lg p-6 text-center">
 
-        <h2 class="text-xl text-green-600 m-4">
-            {% if form.instance.pk %} Edit Tweet {% else %} Create Tweet {% endif %}
-        </h2>
+    <!-- Heading for Edit/Create Tweet -->
+    <h1 class="text-4xl font-bold text-matrix-50 mt-3">Edit The Matrix</h1>
 
-        <form method="POST" enctype="multipart/form-data" class="bg-matrix-200 bg-opacity-60 backdrop-blur-lg p-8 rounded-lg shadow-lg space-y-6">
-            {% csrf_token %}
-            {{ form.as_p }}
+    <h2 class="text-xl text-matrix-100 my-4">
+      {% if form.instance.pk %} Edit Tweet {% else %} Create Tweet {% endif %}
+    </h2>
 
-            <button class="bg-matrix-200 text-matrix-50  px-4 py-2 rounded-lg hover:bg-green-400 hover:text-black" type="submit">
-                POST
-            </button>
-        </form>
+    
+    <form
+      method="POST"
+      enctype="multipart/form-data"
+      class="bg-matrix-200 bg-opacity-60 backdrop-blur-lg p-8 rounded-lg shadow-lg space-y-6"
+    >
+      {% csrf_token %}
+      <div class="space-y-4">
+        
+        <div>
+          {{ form.text.errors }}
+          {{ form.text.label_tag }}
+          {{ form.text|add_class:"w-full p-3 rounded-lg border border-matrix-100 focus:ring-2 focus:ring-matrix-50 focus:outline-none bg-black text-matrix-50" }}
+        </div>
 
-        <button onclick="window.location.href='{% url 'tweet_list' %}'" class= "bg-matrix-200 text-matrix-50  mt-6 px-4 py-2 rounded-lg hover:bg-green-400 hover:text-black">Home</button>
-    </div>
+       
+        <div>
+          {{ form.image.errors }}
+          {{ form.image.label_tag }}
+
+         
+          {% if truncated_image_name %}
+            <p class="text-matrix-50 mt-2">Image: {{ truncated_image_name }}</p>
+          {% endif %}
+
+          <input
+            id="image"
+            name="image"
+            type="file"
+            class="w-full p-3 rounded-lg border border-matrix-100 bg-black text-matrix-50"
+          />
+        </div>
+      </div>
+
+      
+      <button
+        class="w-full bg-matrix-200 text-matrix-50 px-4 py-2 rounded-lg hover:bg-green-400 hover:text-black transition duration-300"
+        type="submit"
+      >
+        POST
+      </button>
+    </form>
+
+    
+    <button
+      onclick="window.location.href='{% url 'tweet_list' %}'"
+      class="w-full bg-matrix-200 text-matrix-50 mt-6 px-4 py-2 rounded-lg hover:bg-green-400 hover:text-black transition duration-300"
+    >
+      Home
+    </button>
+  </div>
 </div>
 {% endblock %}

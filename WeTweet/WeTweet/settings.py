@@ -29,6 +29,8 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+SITE_ID = 2
+
 
 # Application definition
 
@@ -42,10 +44,34 @@ INSTALLED_APPS = [
     "tweet",
     "tailwind",
     "theme",
+    "widget_tweaks",
+    "django.contrib.sites",
+    "allauth",
+    "allauth.account",
+    "allauth.socialaccount",
+    "allauth.socialaccount.providers.google",
+    "allauth.socialaccount.providers.github",
 ]
 
+
+SOCIALACCOUNT_PROVIDERS = {
+    "google": {
+        "METHOD": "oauth2",
+        "SCOPE": ["profile", "email"],
+        "AUTH_PARAMS": {"access_type": "online"},
+    },
+    "github": {
+        "APP": {
+            "client_id": "Ov23liNbyKz60jfDkPUc",
+            "secret": "55178e817fac879f948d8bf8ac44665812ed5b41",
+            "key": "",
+        }
+    },
+}
+
+
 TAILWIND_APP_NAME = "theme"
-INTERNAL_IPS = ['127.0.0.1']
+INTERNAL_IPS = ["127.0.0.1"]
 
 NPM_BIN_PATH = r"C:\Program Files\nodejs\npm.cmd"
 
@@ -58,6 +84,7 @@ MIDDLEWARE = [
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
+    "allauth.account.middleware.AccountMiddleware",
 ]
 
 
@@ -144,4 +171,10 @@ STATICFILES_DIRS = [os.path.join(BASE_DIR, "static")]
 LOGIN_URL = "/accounts/login"
 
 LOGIN_REDIRECT_URL = "/tweet"
-LOGOUT_REDIRECT_URL = "/tweet"
+LOGOUT_REDIRECT_URL = "/logged_out"
+
+
+AUTHENTICATION_BACKENDS = (
+    "django.contrib.auth.backends.ModelBackend",
+    "allauth.account.auth_backends.AuthenticationBackend",
+)

@@ -1,0 +1,43 @@
+{% extends "layout.html" %}
+
+{% block title %} Enter The Matrix{% endblock %}
+
+{% block content %}
+
+<h3 class="text-center text-4xl font-bold text-matrix-100 m-4">
+    Search Results: "{{ query }}"
+</h3>
+
+<div class="container grid grid-cols-1 md:grid-cols-3 gap-6">
+    
+    {% if query|length > 15 %}
+      
+         <p class="text-center text-xl text-matrix-200 col-span-1 md:col-span-3">Whoa, that's a long name! Try keeping it under 15 characters, Neo.</p>
+      
+    {% elif tweets|length < 1 %}
+       
+         <p class="text-center text-xl text-matrix-200 col-span-1 md:col-span-3">Oops, it looks like we couldn't find anyone in the Matrix with that name. Try again, Neo!</p>
+      
+    {% else %}
+        
+        {% for tweet in tweets %}
+            <div class="card bg-gray-800 text-white p-4 rounded-lg shadow-md flex flex-col">
+                <div class="card-body">
+                    {% if tweet.photo %}
+                        <img src="{{ tweet.photo.url }}" alt="{{ tweet.text }}" class="w-48 h-48 object-cover mx-auto mb-4">
+                    {% endif %}
+                    <h5 class="card-title font-bold text-green-400 text-center"> {{ tweet.user.username }} </h5>
+                    <p class="card-text text-center mb-4"> {{ tweet.text }} </p>
+                    {% if tweet.user == user %}
+                    <div class="flex justify-center gap-4 mt-4">
+                        <a href="{% url 'tweet_edit' tweet.id %}" class="bg-matrix-200 text-matrix-50 px-4 py-2 rounded-lg hover:bg-green-400 hover:text-black">Edit</a>
+                        <a href="{% url 'tweet_delete' tweet.id %}" class="bg-red-600 text-white py-2 px-4 rounded hover:bg-red-800">Delete</a>
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
+        {% endfor %}
+    {% endif %}
+</div>
+
+{% endblock %}

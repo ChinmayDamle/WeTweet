@@ -1,42 +1,44 @@
-{% extends "layout.html" %}
-
-
-{% comment %} {% extends "layout.html" %}
-
-{% block content %}
-<h1 class="text-center  mt-4">
-    Welcome to WeTweet
-</h1>
-
-<h2> Login to Enter into Matrix.</h2>
-<form method="post">
-    {% csrf_token %}
-    {{form.as_p}}
-    <button class="btn btn-primary" >Login</button>
-</form>
-
-<p > Don't have an account? <button class="btn btn-primary" > <a href="  {%url 'register'%} " class="text-decoration-none">Register Here</a></button></p>
-{% endblock %} {% endcomment %}
-
-
-
-{% block content %}
+{% extends "layout.html" %} {% load socialaccount %} {% block content %}
 <div class="flex justify-center items-center min-h-screen bg-black">
-    <div class="text-center">
-        <h1 class="text-4xl font-bold text-green-700 mt-3">
-            Welcome to WeTweet
-        </h1>
+  <div class="text-center">
+    <h1 class="text-4xl font-bold text-green-700 mt-3">Welcome to WeTweet</h1>
 
-        <h2 class="text-xl text-green-600 m-4">Login to Enter the Matrix</h2>
-        <form method="post" class="bg-matrix-200 bg-opacity-60 backdrop-blur-lg p-8 rounded-lg shadow-lg space-y-6">
-            {% csrf_token %}
-            {{form.as_p}}
-            <button class="bg-matrix-200 text-matrix-50  px-4 py-2 rounded-lg hover:bg-green-400 hover:text-black">Login</button>
-        </form>
+    <h2 class="text-xl text-green-600 m-4">Login to Enter the Matrix</h2>
+    <form
+      method="post"
+      class="bg-matrix-200 bg-opacity-60 backdrop-blur-lg p-8 rounded-lg shadow-lg space-y-6"
+    >
+      {% csrf_token %} {{form.as_p}}
+      <button
+        class="bg-matrix-200 text-matrix-50 px-4 py-2 rounded-lg hover:bg-green-400 hover:text-black"
+      >
+        Login
+      </button>
+    </form>
 
-        <p class="mt-4">Don't have an account?
-            <button onclick="window.location.href='{% url 'register' %}'" class="bg-matrix-200 text-matrix-50  px-4 py-2 rounded-lg hover:bg-green-400 hover:text-black">Register Here</button>
-        </p>
-    </div>
+    <button
+      onclick="window.location.href='{% provider_login_url 'google' %}'"
+      class="bg-matrix-200 text-matrix-50 px-4 py-2 rounded-lg hover:bg-green-400 hover:text-black mt-4"
+    >
+      Sign In with Google
+    </button>
+
+    <button
+      onclick="window.location.href='{% provider_login_url 'github' %}'"
+      class="bg-matrix-200 text-matrix-50 px-4 py-2 rounded-lg hover:bg-green-400 hover:text-black mt-4"
+    >
+      Sign In with Github
+    </button>
+
+    <p class="mt-4">
+      Don't have an account?
+      <button
+        onclick="window.location.href='{% url 'register' %}'"
+        class="bg-matrix-200 text-matrix-50 px-4 py-2 rounded-lg hover:bg-green-400 hover:text-black"
+      >
+        Register Here
+      </button>
+    </p>
+  </div>
 </div>
 {% endblock %}

@@ -1,66 +1,40 @@
 # WeTweet
 
-WeTweet is a social media platform built with **Django** and **TailwindCSS** that allows users to post tweets, view other users' tweets, and manage their own posts. This project showcases my **front-end development** and **Django back-end** skills. The project emphasizes user authentication, and CRUD functionality for posts.
+WeTweet is a social media platform built using Django, allowing users to tweet and view others' tweets. This project features user authentication, responsive design, and a mobile-friendly interface.
 
 ## Features
-
-- **User Authentication**: Secure login, registration, and logout functionalities using Django's built-in authentication.
-- **Tweet Management**: Users can create, edit, and delete their tweets.
-- **Image Support**: Users can attach an image to their tweets.
-- **Dynamic Content**: The layout adjusts dynamically to handle tweets with and without images.
+- **User Authentication**: Users can register, log in, and log out.
+- **Tweeting Functionality**: Authenticated users can create, edit, and delete tweets.
+- **Responsive Design**: The application is optimized for both mobile and desktop views.
+- **Search Functionality**: Users can search for tweets by name.
+- **Hamburger Menu**: A mobile-friendly menu for navigation.
 
 ## Technologies Used
+- **Backend**: Python, Django
+- **Frontend**: HTML, CSS, JavaScript
+- **Styling**: Tailwind CSS
+- **Database**: SQLite (default), can be configured for others
 
-- **Backend**: Django Framework
-- **Frontend**: TailwindCSS for styling
-- **Database**: SQLite (can be replaced with PostgreSQL or MySQL for production)
-- **HTML**: Used Django templating engine to render dynamic content
-- **Python**: Server-side scripting
-- **JavaScript**: Used to add interactivity
+## Installation
+To run WeTweet locally, follow these steps: 
+1. Clone the repository using `git clone https://github.com/ChinmayDamle/WeTweet.git` and navigate into the project directory. 
+2. Set up a virtual environment (optional but recommended) by running `python -m venv .venv` and activating it. 
+3. Install required packages by executing `pip install -r requirements.txt`. 
+4. Run migrations with `python manage.py migrate`. 
+5. Create a superuser (optional for admin access) using `python manage.py createsuperuser`. 
+6. Start the development server by running `python manage.py runserver`. 
+7. Access the application by opening your browser and navigating to `http://127.0.0.1:8000/`.
 
-## How to Run the Project
-
-1. Clone the repository:
-
-    ```bash
-    git clone https://github.com/ChinmayDamle/WeTweet.git
-    ```
-
-2. Navigate to the project directory:
-
-    ```bash
-    cd WeTweet
-    ```
-
-3. Install the required dependencies:
-
-    ```bash
-    pip install -r requirements.txt
-    ```
-
-4. Run the Django development server:
-
-    ```bash
-    python manage.py runserver
-    ```
+## Usage
+- **Register**: Click on "Enter The Matrix" to create a new account. 
+- **Login**: Use your credentials to log in. 
+- **Tweet**: Post new tweets from your dashboard. 
+- **Edit/Delete Tweets**: Manage your tweets easily from your profile. 
+- **Search**: Use the search bar to find specific tweets.
 
 
-
-## Skills Demonstrated
-
-- **Django Expertise**: Built robust models and views to handle user authentication, form handling, and dynamic content rendering.
-- **TailwindCSS**: Used utility-first CSS to ensure responsiveness and a clean UI.
-- **HTML & Templating**: Mastered Django's templating system to dynamically inject content into HTML.
-- **Python & Django ORM**: Developed efficient server-side logic and database queries.
-- **Version Control**: Managed the project using Git and GitHub for collaboration and versioning.
-
-
-## Future Enhancements
-
-- Add real-time tweet updates using Django Channels or WebSockets.
-- Implement user mentions and hashtags.
-- Add unit and integration tests for better test coverage.
+## Contributing
+If you want to contribute to WeTweet, please fork the repository and submit a pull request. Ensure your code follows the project's coding standards and includes relevant tests.
 
 ## License
-
-This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for more information.
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for more details.

@@ -12,5 +12,13 @@
       "src": "/(.*)",
       "dest": "WeTweet/wsgi.py"
     }
+  ],
+
+  "rewrites": [
+    {
+      "source": "/(.*)",
+      "destination": "/"
+    }
   ]
+
 }

@@ -12,10 +12,6 @@
   ],
   "routes": [
     {
-      "src": "/api/(.*)",
-      "dest": "WeTweet/wsgi.py"
-    },
-    {
       "src": "/(.*)",
       "dest": "WeTweet/wsgi.py"
     }

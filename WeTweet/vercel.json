@@ -13,7 +13,7 @@
   "routes": [
     {
       "src": "/(.*)",
-      "dest": "WeTweet/wsgi.py"
+      "dest": "/WeTweet/wsgi.py"
     }
   ]
 }

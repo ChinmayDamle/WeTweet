@@ -24,14 +24,17 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # SECURITY WARNING: keep the secret key used in production secret!
 # SECRET_KEY = "django-insecure-1-pt+z7sxwixk77#1s6pb4kz1!s-ek653uxen$7k+%br_cg7uv"
 
-SECRET_KEY = os.getenv('SECRET_KEY', 'django-insecure-1-pt+z7sxwixk77#1s6pb4kz1!s-ek653uxen$7k+%br_cg7uv')
+SECRET_KEY = os.getenv(
+    "SECRET_KEY", "django-insecure-1-pt+z7sxwixk77#1s6pb4kz1!s-ek653uxen$7k+%br_cg7uv"
+)
 
 # SECURITY WARNING: don't run with debug turned on in production!
 # DEBUG = False
 
-DEBUG = os.getenv('DEBUG', 'False') == 'True'
+DEBUG = os.getenv("DEBUG", "False") == "True"
 
-ALLOWED_HOSTS = ['we-tweet.vercel.app', '127.0.0.1']
+ALLOWED_HOSTS = ["we-tweet.vercel.app", "127.0.0.1", ".vercel.app"]
+
 
 SITE_ID = 2
 
@@ -171,7 +174,7 @@ MEDIA_ROOT = os.path.join(BASE_DIR, "media")
 
 # STATIC_URL = "static/"
 # STATICFILES_DIRS = [os.path.join(BASE_DIR, "static")]
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
 
 LOGIN_URL = "/accounts/login"
 

@@ -33,7 +33,7 @@ SECRET_KEY = os.getenv(
 
 DEBUG = os.getenv("DEBUG", "False") == "True"
 
-ALLOWED_HOSTS = ["we-tweet.vercel.app", "127.0.0.1", ".vercel.app"]
+ALLOWED_HOSTS = ["*"]
 
 
 SITE_ID = 2
